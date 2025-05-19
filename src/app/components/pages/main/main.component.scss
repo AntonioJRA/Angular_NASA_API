@@ -1,0 +1,11 @@
+.text-with-border {
+  color: white;
+  text-shadow: -2px -2px 0 black, 2px -2px 0 black, -2px 2px 0 black,
+    2px 2px 0 black;
+}
+
+.nasa-item {
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}

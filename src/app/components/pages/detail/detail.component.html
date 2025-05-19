@@ -1,0 +1,42 @@
+<div class="flex justify-center p-6">
+  <div class="flex flex-col justify-center" *ngIf="data">
+    <div class="flex flex-col space-y-4 xl:flex-row xl:space-x-4">
+      <!-- Imagen pequeña -->
+      <img
+        *ngIf="data.media_type === 'image'"
+        [src]="data.url"
+        [alt]="data.alt"
+        (click)="openImg(data.url)"
+        class="aspect-square max-w-[500px] rounded-full self-center object-cover cursor-pointer"
+      />
+
+      <!-- Modal con la imagen en grande -->
+      <div
+        *ngIf="imagenGrande"
+        class="fixed inset-0 bg-black bg-opacity-80 flex items-center justify-center z-50"
+        (click)="closeImg()"
+      >
+        <img
+          [src]="imagenGrande"
+          class="w-[500px] h-[500px] rounded-xl shadow-lg"
+        />
+      </div>
+
+      <iframe
+        *ngIf="data.media_type === 'video'"
+        [src]="data.url"
+        class=" rounded-full self-center"
+      ></iframe>
+
+      <p class="p-5 self-center border-4 border-gray-800 text-gray-300 bg-gray-800 rounded-3xl text-[clamp(1rem,2.5vw,1.5rem)]">
+        {{ data.explanation }}
+      </p>
+    </div>
+    <button
+      class="cursor-pointer bg-gray-800 w-auto self-end py-2 px-4 rounded text-white font-bold mt-5"
+      [routerLink]="['/']"
+    >
+      Volver a Inicio
+    </button>
+  </div>
+</div>
